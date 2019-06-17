@@ -1,6 +1,6 @@
 <?php
 if(!isset($argv[1]))
-    die("Usage:\n\tphp $argv[0] [v] - list lang\n\tphp $argv[0] [v] [lang] - download caption\n\n[v] is v query of youtube");
+    die("Usage:\n\tphp $argv[0] [v] - list lang\n\tphp $argv[0] [v] [lang] - download caption\n\n[v] is v query of youtube\n");
 
 $scc=stream_context_create(['ssl'=>[
     "verify_peer"=>false,
