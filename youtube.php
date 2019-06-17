@@ -55,7 +55,7 @@ if(isset($argv[2])){
                     fwrite($srt, "\n");
                 }else{
                     fwrite($srt, srt_sync($p[$i]['t'], $p[$i]['d'])."\n");
-                    fwrite($srt, trim($p[$i])."\n");
+                    fwrite($srt, trim($p[$i])."\n\n");
                 }
             }
             fclose($srt);
