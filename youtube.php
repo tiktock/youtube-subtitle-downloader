@@ -28,14 +28,16 @@ if(!isset($player_response->captions)){
     echo "no caption!\n";
     exit();
 }
+
+// $title=$player_response->videoDetails->title;    // Original title
+$title=$player_response->microformat->playerMicroformatRenderer->title->simpleText;    // Translated title
 $captions=$player_response->captions->playerCaptionsTracklistRenderer->captionTracks;
 
 if(isset($argv[2])){
     foreach($captions as $c){
         if($argv[2]===$c->languageCode){
-            $title=preg_replace('/\\\\|\/|\:|\*|\?|\"|\<|\>|\|/', '_', $config->args->title); // Can't contain charator in filename
+            $title=preg_replace('/\\\\|\/|\:|\*|\?|\"|\<|\>|\|/', '_', $title); // Can't contain charator in filename
             $srt_file=$title.' - YouTube.srt';
-
             $xml=simplexml_load_string(file_get_contents($c->baseUrl.'&fmt=srv3', false, $scc));
             
             $srt=fopen($srt_file, 'wt');
@@ -66,7 +68,7 @@ if(isset($argv[2])){
     }
     echo "no this caption!\n";
 }else{
-    echo 'title: '.$config->args->title."\n";
+    echo 'title: '.$title."\n";
     echo "captions: \n";
     foreach($captions as $c)
         echo "\t".$c->name->simpleText.' ['.$c->languageCode.']'."\n";
