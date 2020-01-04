@@ -15,5 +15,5 @@ Usage:
         php youtube.php [v] - list lang
         php youtube.php [v] [lang] - download caption
 
-[v] is v query of youtube
+[v] is v parameter of youtube url
 ```
