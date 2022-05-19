@@ -36,7 +36,7 @@ $captions=$player_response->captions->playerCaptionsTracklistRenderer->captionTr
 if(isset($argv[2])){
     foreach($captions as $c){
         if($argv[2]===$c->languageCode){
-            $title=preg_replace('/\\\\|\/|\:|\*|\?|\"|\<|\>|\|/', '_', $title); // Can't contain charator in filename
+            $title=preg_replace('/\\\\|\/|\:|\*|\?|\"|\<|\>|\|/', '_', $title); // Can't be contained charator in filename
             $srt_file=$title.' - YouTube.srt';
             $xml=simplexml_load_string(file_get_contents($c->baseUrl.'&fmt=srv3', false, $scc));
             
